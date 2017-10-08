@@ -1,0 +1,3 @@
+{:require  [gui.app]
+ :init-fns [gui.app/init]
+ :compiler-options {:asset-path "js/app.out"}}

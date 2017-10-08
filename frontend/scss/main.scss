@@ -1,0 +1,302 @@
+@import "node_modules/bulma/sass/utilities/initial-variables";
+
+// swap to a darker primary green
+$primary: #00a990;
+$title-weight: 300;
+
+@import "node_modules/bulma/bulma";
+@import "node_modules/c3/src/scss/main";
+@import "node_modules/bulma-tooltip/tooltip";
+
+// vars
+$alert-red: #ff3860;
+$warning-orange: orange;
+
+$negative-content: rgba(252, 7, 11, .1);
+$positive-content: rgba(63, 191, 76, .1);
+
+// allow multi-line content for bulma-tooltip
+.tooltip::after {
+    min-height: 3em;
+    min-width: 30em;
+    white-space: pre-line;
+    text-align: center;
+}
+
+hr {
+    border-style: solid;
+    border-width: 1px 0 0 0;
+}
+
+.nojs-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.are-small {
+    font-size: .8em;
+}
+
+.simple-list {
+    margin-bottom: .5em;
+}
+
+.simple-list li {
+    margin-left: 1.5em;
+}
+
+.card-content.is-narrow {
+    padding: .75rem;
+}
+
+.item-title {
+    max-height: 3.3rem;
+    line-height: 1.1;
+    margin-bottom: .5rem;
+    word-break: break-word;
+    font-weight: 300;
+    overflow-y: auto;
+}
+
+.card-content.is-narrow.is-positive {
+    background-color: $positive-content;
+}
+
+.card-content.is-narrow.is-negative {
+    background-color: $negative-content;
+}
+
+#dashboard {
+    padding: .5em;
+}
+
+.op-body {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
+.faqs {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.faq-question {
+    cursor: pointer;
+}
+
+.faq-answer {
+    margin-bottom: 1.5em;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+
+a.is-unstyled {
+    text-decoration: none;
+    color: black;
+}
+
+.is-flexed {
+    display: flex;
+    justify-content: space-between;
+}
+
+.is-inline li {
+    display: inline-block;
+    padding-right: 0.2em;
+}
+
+.logo {
+    width: 120px;
+    height: 83px;
+}
+
+.wrapper {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.message-wrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+}
+
+.has-padding-for-nav {
+    padding-top: 4.5rem;
+}
+
+.has-small-margin-right {
+    margin-right: 0.2em;
+}
+
+.has-small-margin-left {
+    margin-left: 0.5em;
+}
+
+#historical-community-data {
+    margin-top: 3em;
+    margin-bottom: 5em;
+}
+
+.container.placeholder {
+    height: 10em;
+}
+
+#graphs {
+    margin-top: 2em;
+}
+
+@-webkit-keyframes slide-in {
+    100% {
+        -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+    }
+}
+
+@keyframes slide-in {
+    100% {
+        -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+    }
+}
+
+@-webkit-keyframes slide-out {
+    0% {
+        -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+    }
+
+    100% {
+        -webkit-transform: translateX(-40%);
+                transform: translateX(-40%);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        -webkit-transform: translateX(0%);
+                transform: translateX(0%);
+    }
+
+    100% {
+        -webkit-transform: translateX(-40%);
+                transform: translateX(-40%);
+    }
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2),
+                        0 2px 2px 0 rgba(0, 0, 0, .14),
+                        0 1px 5px 0 rgba(0, 0, 0, .12);
+            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2),
+                0 2px 2px 0 rgba(0, 0, 0, .14),
+                0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.is-alert {
+    color: $alert-red;
+}
+
+.tabs li.is-alert a {
+    color: $alert-red;
+}
+
+.tabs li.is-active.is-alert a {
+    color: $alert-red;
+    font-weight: bold;
+    border-bottom-color: $alert-red;
+}
+
+.title.is-alert {
+    color: $alert-red;
+    font-weight: bold;
+}
+
+.is-warning {
+    color: orange;
+}
+
+span.is-alert, span.is-warning {
+    font-weight: bold;
+}
+
+.is-warning .level-item-right, .is-alert .level-item-right {
+    font-weight: bold;
+}
+
+.tile.is-alert div {
+    color: $alert-red;
+    font-weight: bold;
+}
+
+.tile.is-warning div {
+    color: orange;
+    font-weight: bold;
+}
+
+.tabs li.is-warning a {
+    color: $warning-orange;
+}
+
+.tabs li.is-active.is-warning a {
+    color: $warning-orange;
+    font-weight: bold;
+    border-bottom-color: orange;
+}
+
+.title.is-warning {
+    font-weight: bold;
+}
+
+.is-red {
+    background-color: $alert-red;
+}
+
+.navbar.is-red .navbar-item {
+    color: white;
+}
+
+.navbar.is-red .navbar-item strong {
+    color: white;
+}
+
+.navbar.is-red .navbar-item:hover strong {
+    color: $black-bis;
+    background-color: white;
+}
+
+.navbar.is-red .navbar-item:hover:not(.no-hover) {
+    color: $black-bis;
+    background-color: white;
+}
+
+.with-hover:hover {
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2),
+                        0 4px 5px 0 rgba(0, 0, 0, .14),
+                        0 1px 10px 0 rgba(0, 0, 0, .12);
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2),
+                0 4px 5px 0 rgba(0, 0, 0, .14),
+                0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+.with-pointer {
+    cursor: pointer;
+}
+
+.is-yellow {
+    background-color: #ffdd57;
+}
+
+@media screen and (min-width: 769px) {
+    .is-extra-wide {
+        width: 80%;
+    }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /termsofuse.html
+Disallow: /privacypolicy.html
+Disallow: /impressum.html

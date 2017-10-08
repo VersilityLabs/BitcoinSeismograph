@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "bulma": "^0.5.3",
+    "bulma-tooltip": "0.0.4",
+    "c3": "^0.4.18"
+  }
+}
