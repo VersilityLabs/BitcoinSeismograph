@@ -1,4 +1,4 @@
-(defproject backend "0.1-SNAPSHOT"
+(defproject backend "0.1"
 
   :description "Backend of the Bitcoin Seismograph. Serves and aggregates data from multiple data sources."
   :url "http://bitcoinseismograph.info"
@@ -27,5 +27,7 @@
   :main ^:skip-aot backend.core
 
   :target-path "target/%s"
+  :jar-name "backend.jar"
+  :uberjar-name "backend-standalone.jar"
 
   :profiles {:uberjar {:aot :all}})

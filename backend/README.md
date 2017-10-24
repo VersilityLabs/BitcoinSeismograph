@@ -1,6 +1,20 @@
 # Backend Instructions
 
-https://portal.influxdata.com/downloads
+Backend of the Bitcoin Seismograph. Serves and aggregates data from multiple data sources:
+
+- An Elasticsearch instance containing all news, forum and reddit scrapes from the Bitcoin Seismograph python 
+scrapers/crawlers (see separate project folder/branch).
+
+- An Influx DB instance containing all bitcoin price, market, blockchain and mining statistics 
+(crawlers see separate project folder/branch).
+
+## Setup
+
+- Install Influx DB. e.g. by using [https://portal.influxdata.com/downloads]().
+
+- Install Elasticsearch.
+
+- Fill instances with appropriate data by using the crawlers and scrapers.
 
 ## Configuration
 
@@ -27,7 +41,8 @@ Commands:
 - Use `lein run dev` for starting the api.
 
 Configuration: 
-- Alternatively create a `profiles.clj` in the project folder with the following content to specify the environment parameters.
+- Instead of using environment variables you can create a `profiles.clj` in the project folder with the following 
+content to specify the environment parameters.
 ```clojure
 {:dev {:env {:influx-host "..."    ; Replace ... with your InfluxDB host.
              :es-url      "..."}}} ; Replace ... with your Elasticsearch url. 
@@ -35,6 +50,13 @@ Configuration:
 
 ## Test
 
+- Check functionality by verifying the api endpoints `/api/dashboard`, `/api/text` and `/api/graph`.
+
 ## Build
 
+- Use `lein uberjar` to generate a jar files in `target/uberjar/`.
+
 ## Run
+
+- Setup environment variables, Influx DB and Elasticsearch.
+- Use `lein run` or `java -jar backend-standalone.jar`.
