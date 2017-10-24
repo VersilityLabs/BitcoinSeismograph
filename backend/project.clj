@@ -1,7 +1,13 @@
 (defproject backend "0.1-SNAPSHOT"
 
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Backend of the Bitcoin Seismograph. Serves and aggregates data from multiple data sources."
+  :url "http://bitcoinseismograph.info"
+
+  :license {:name   "MIT License"
+            :url    "https://opensource.org/licenses/MIT"
+            :author "Versility Labs GmbH & Marcel Morisse"
+            :year   2017
+            :key    "mit"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [yada "1.2.1"]
@@ -13,7 +19,10 @@
                  [org.clojure/core.memoize "0.5.8"]
 
                  [org.clojure/tools.logging "0.4.0"]
-                 [ch.qos.logback/logback-classic "1.2.3"]]
+                 [ch.qos.logback/logback-classic "1.2.3"]
+                 [environ "1.1.0"]]
+
+  :plugins [[lein-environ "1.1.0"]]
 
   :main ^:skip-aot backend.core
 

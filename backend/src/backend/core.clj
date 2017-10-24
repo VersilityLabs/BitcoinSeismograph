@@ -12,17 +12,23 @@
             [clojure.string :as str]
             [clojure.tools.logging :refer [info]]
             [clojure.core.cache :as cache]
-            [clojure.core.memoize :as memo])
+            [clojure.core.memoize :as memo]
+            [environ.core :refer [env]])
   (:import (org.apache.commons.math3.stat.regression SimpleRegression)))
 
 (def influxdb
-  (c/make-client {:host     (System/getenv "INFLUX_DB")
-                  :db       "seismograph"
-                  :get-opts {:socket-timeout 5000           ;; in ms
-                             :conn-timeout   5000}}))       ;; in ms
+  (c/make-client {:host     (or (env :influx-host) "localhost")
+                  :scheme   (or (env :influx-scheme) "http")
+                  :port     (Integer/parseInt
+                              (or (env :influx-port) "8086"))
+                  :username (or (env :influx-username) "root")
+                  :password (or (env :influx-password) "root")
+                  :db       (or (env :influx-db) "seismograph")
+                  :get-opts {:socket-timeout 5000           ; in ms
+                             :conn-timeout   5000}}))       ; in ms
 
 (def esconn
-  (esr/connect (System/getenv "ES_URI")))
+  (esr/connect (or (env :es-url) "http://localhost:9200")))
 
 (defn trend [values]
   (let [regression (SimpleRegression.)
@@ -708,16 +714,14 @@
    [
     ["/api" (yada/swaggered
               (api-routes)
-              {:info     {:title       "The BitcoinSeismograph API"
-                          :version     "0.1"
-                          :description "Methods for observing the Bitcoin ecosystem."
-                          ;:termsOfService "http://helloreverb.com/terms/" ;; TODO
-                          ;:contact        {:name  "The API Team" ;; TODO
-                          ;                 :email "foo@example.com"
-                          ;                 :url   "http://www.example-url.com"}
-                          ;:license        {:name "Eclipse Public License" ;; TODO
-                          ;                 :url  "http://www.eclipse.org/legal/epl-v10.html"}}
-                          }
+              {:info     {:title          "The BitcoinSeismograph API"
+                          :version        "0.1"
+                          :description    "Methods for observing the Bitcoin ecosystem."
+                          :termsOfService "https://bitcoinseismograph.info/termsofuse.html"
+                          :contact        {:name  "Versility Labs GmbH & Marcel Morisse"
+                                           :email "feedback@bitcoinseismograph.info"
+                                           :url   "https://bitcoinseismograph.info"}
+                          :license        {:name "MIT License"}}
                :tags     [{:name        "frontend"
                            :description "aggregated frontend methods"}]
                :basePath "/api"})]
@@ -730,9 +734,13 @@
 ;; #### MAIN ####
 ;; ##############
 
+(defn launch []
+  ;; for repl use
+  (yada/listener (routes) {:port (Integer/parseInt (or (env :port) "3020"))}))
+
 (defn -main [& args]
   (info "Starting...")
-  (yada/listener (routes) {:port (Integer/parseInt (or (System/getenv "PORT") "3020"))})
+  (launch)
   ;; all threads are daemon, so block forever:
   (info "... Startup Done!")
   @(promise))
