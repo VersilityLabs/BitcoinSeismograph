@@ -9,9 +9,9 @@ If you have any questions/suggestions feel free to [open an issue](https://githu
 
 ## Status
 
-We are currently in the process of getting the source code ready for publication (cleaning up, adding documentation, etc.).
+The source code is publicly available in seperate feature branches!
 
-We should be ready sometime during autumn.
+We plan to do further cleanup and documentation, including setting up a continous integration. Feel free to browse the code, suggest improvements and ask questions. We are open to any contributions! 
 
 ## Architectural Overview
 
