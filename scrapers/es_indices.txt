@@ -1,0 +1,131 @@
+curl -XPUT "http://localhost:9200/threads" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "thread": {
+      "properties": {
+        "community": {
+          "type": "keyword"
+        },
+        "board": {
+          "type": "keyword"
+        },
+        "permalink": {
+          "type": "keyword"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "title": {
+          "type": "text"
+        },
+        "op": {
+          "type": "text"
+        },
+        "sentiment": {
+          "type": "object"
+        },
+        "scrapes": {
+          "type": "nested",
+          "properties": {
+            "scraped_at": {
+              "type": "date"
+            },
+            "views": {
+              "type": "long"
+            },
+            "replies": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}'
+
+curl -XPUT "http://localhost:9200/submissions" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "submission": {
+      "properties": {
+        "community": {
+          "type": "keyword"
+        },
+        "board": {
+          "type": "keyword"
+        },
+        "permalink": {
+          "type": "keyword"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "title": {
+          "type": "text"
+        },
+        "op": {
+          "type": "text"
+        },
+        "sentiment": {
+          "type": "object"
+        },
+        "scrapes": {
+          "type": "nested",
+          "properties": {
+            "scraped_at": {
+              "type": "date"
+            },
+            "score": {
+              "type": "long"
+            },
+            "comments": {
+              "type": "integer"
+            },
+            "rank": {
+              "type": "float"
+            }
+          }
+        }
+      }
+    }
+  }
+}'
+
+curl -XPUT "http://localhost:9200/releases" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "release": {
+      "properties": {
+        "release_date": {
+          "type": "date"
+        },
+        "version": {
+          "type": "keyword"
+        },
+        "url": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}'
+
+
+curl -XPUT "http://localhost:9200/news" -H 'Content-Type: application/json' -d'
+{
+  "mappings": {
+    "item": {
+      "properties": {
+        "timestamp": {
+          "type": "date"
+        },
+        "title": {
+          "type": "text"
+        },
+        "url": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}'
