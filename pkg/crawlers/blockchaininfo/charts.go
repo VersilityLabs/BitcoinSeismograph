@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	mctURL = "https://api.blockchain.info/charts/Median-Confirmation-Time?timespan=1week" // be nice
+	mctURL = "https://blockchain.info/charts/median-confirmation-time?format=json&timespan=1week" // be nice
 )
 
 type Chart struct {
